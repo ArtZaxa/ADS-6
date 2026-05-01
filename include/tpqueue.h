@@ -8,7 +8,6 @@ class TPQueue {
   struct Node {
       T data;
       Node* next;
-
   };
 
   Node* head;
@@ -51,14 +50,12 @@ class TPQueue {
     TPQueue& operator=(const TPQueue& other) {
         if (this != &other) {
             clear();
-
             Node* cur = other.head;
             while (cur != nullptr) {
                 push(cur->data);
                 cur = cur->next;
             }
         }
-
         return *this;
     }
 
@@ -79,7 +76,6 @@ class TPQueue {
         while (cur->next != nullptr && cur->next->data.prior >= value.prior) {
             cur = cur->next;
         }
-
         newNode->next = cur->next;
         cur->next = newNode;
         ++count;
@@ -89,14 +85,11 @@ class TPQueue {
         if (head == nullptr) {
             throw std::out_of_range("Pqueue is empty");
         }
-
         Node* oldHead = head;
         T result = oldHead->data;
-
         head = head->next;
         delete oldHead;
         --count;
-
         return result;
     }
 
